@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PalmFlux</title>
+    <title>PalmFlux Sphere</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -12,8 +12,8 @@
     <section id="panel">
       <div class="panel-top">
         <div>
-          <h1>PalmFlux</h1>
-          <p>Low-latency hand-tracked particle field</p>
+          <h1>PalmFlux Sphere</h1>
+          <p>Continuous hand-controlled particle breathing sphere</p>
         </div>
         <span class="status-pill"><span class="dot"></span><span id="status">Booting…</span></span>
       </div>
@@ -21,20 +21,19 @@
       <div class="controls">
         <button id="btn-camera">Enable Camera</button>
         <button id="btn-preview">Preview</button>
-        <button id="btn-shape">Next Shape</button>
       </div>
 
       <div class="metrics">
-        <div><span>Gesture</span><code id="metric-gesture">—</code></div>
-        <div><span>Pinch</span><code id="metric-pinch">—</code></div>
-        <div><span>Pinch Strength</span><code id="metric-pinch-strength">—</code></div>
-        <div><span>Shape</span><code id="metric-shape">SPHERE</code></div>
-        <div><span>Latency Mode</span><code id="metric-mode">Fast tracking</code></div>
+        <div><span>Tracking</span><code id="metric-tracking">—</code></div>
+        <div><span>Hand openness</span><code id="metric-openness">—</code></div>
+        <div><span>Sphere radius</span><code id="metric-radius">—</code></div>
+        <div><span>Mode</span><code id="metric-mode">Smooth continuous control</code></div>
       </div>
 
       <p class="hint">
-        Gesture map: <code>pinch</code> = grab and drag, <code>fist</code> = next shape,
-        <code>open palm</code> = burst, <code>victory</code> = swirl, <code>index point</code> = attract.
+        This version removes discrete gesture switching entirely. One detected hand controls only
+        the sphere radius: a more open hand expands the particle sphere; a more closed hand contracts it.
+        Multiple smoothing layers are applied to reduce jitter.
       </p>
     </section>
 
