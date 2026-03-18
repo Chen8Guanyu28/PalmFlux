@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PalmFlux</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="stage"></div>
+
+    <section id="panel">
+      <div class="panel-top">
+        <div>
+          <h1>PalmFlux</h1>
+          <p>Low-latency hand-tracked particle field</p>
+        </div>
+        <span class="status-pill"><span class="dot"></span><span id="status">Booting…</span></span>
+      </div>
+
+      <div class="controls">
+        <button id="btn-camera">Enable Camera</button>
+        <button id="btn-preview">Preview</button>
+        <button id="btn-shape">Next Shape</button>
+      </div>
+
+      <div class="metrics">
+        <div><span>Gesture</span><code id="metric-gesture">—</code></div>
+        <div><span>Pinch</span><code id="metric-pinch">—</code></div>
+        <div><span>Pinch Strength</span><code id="metric-pinch-strength">—</code></div>
+        <div><span>Shape</span><code id="metric-shape">SPHERE</code></div>
+        <div><span>Latency Mode</span><code id="metric-mode">Fast tracking</code></div>
+      </div>
+
+      <p class="hint">
+        Gesture map: <code>pinch</code> = grab and drag, <code>fist</code> = next shape,
+        <code>open palm</code> = burst, <code>victory</code> = swirl, <code>index point</code> = attract.
+      </p>
+    </section>
+
+    <section id="preview-shell" hidden>
+      <div class="preview-top">
+        <span>Camera Preview</span>
+        <span>Press <code>D</code> to toggle landmarks</span>
+      </div>
+      <div class="preview-box">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="overlay"></canvas>
+      </div>
+    </section>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
