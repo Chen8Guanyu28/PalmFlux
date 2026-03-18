@@ -20,7 +20,6 @@ html, body {
 }
 
 button, code { font: inherit; }
-
 #stage { position: fixed; inset: 0; }
 
 #panel {
@@ -99,7 +98,6 @@ button:hover { background: rgba(255, 255, 255, 0.1); }
 }
 
 .metrics div { display: contents; }
-
 .metrics span {
   color: var(--muted);
   font-size: 12px;
