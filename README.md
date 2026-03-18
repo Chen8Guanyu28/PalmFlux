@@ -1,32 +1,35 @@
-# PalmFlux
+# PalmFlux Sphere
 
-PalmFlux is a lightweight browser-based hand-tracked particle interaction demo built for lower latency and more reliable gesture behavior than the earlier prototype.
+A simplified version of the earlier prototype.
 
 ## What changed
 
-- Switched from canned gesture recognition to `HandLandmarker` plus custom gesture logic for faster, more controllable interaction.
-- Pinch uses normalized thumb-index distance with hysteresis, which is more stable across different camera distances.
-- Follow behavior uses frame-rate independent smoothing and velocity clamping, so the particle field tracks the hand without jumpy overshoot.
-- The project is plain static frontend code, so it can run directly in VS Code Live Server or any static hosting setup.
+- Removed all discrete gesture switching.
+- Removed shape switching entirely.
+- The particle system is now always a sphere.
+- One hand continuously controls only one parameter: sphere radius.
+- More open hand -> larger sphere.
+- More closed hand -> smaller sphere.
+- Added stronger smoothing on both landmarks and control signal to reduce jitter.
 
-## Gesture map
+## Why this should feel more stable
 
-- `pinch`: grab and drag the particle cluster
-- `fist`: switch particle shape
-- `open palm`: trigger burst
-- `victory`: inject swirl motion
-- `index point`: attract particles toward the finger direction
+Instead of classifying several gesture categories every frame, this version uses one continuous measurement:
 
-## Run locally
+`average fingertip distance to palm center / palm width`
 
-Open the folder with VS Code and run Live Server on `index.html`, or serve it with any static server.
+That signal is then smoothed in two stages:
+1. landmark smoothing
+2. openness smoothing + deadband
+
+This substantially reduces flicker and random jumping compared with category-based gesture switching.
+
+## Run
+
+Serve the folder statically.
 
 ```bash
 python -m http.server 5500
 ```
 
-Then open `http://127.0.0.1:5500`.
-
-## Notes
-
-Recognition quality still depends on camera quality, frame rate, light, and hand visibility. This version is optimized for responsiveness and robustness, but no browser-based webcam tracker can guarantee perfect accuracy on every device.
+Open `http://127.0.0.1:5500`.
